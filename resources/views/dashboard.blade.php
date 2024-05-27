@@ -31,9 +31,9 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
             <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
+                <i class="fas fa-book-open"></i>
             </div>
             <div class="sidebar-brand-text mx-3">Dashboard Buku Tamu</div>
         </a>
@@ -43,7 +43,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/dashboard">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -53,23 +53,14 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Interface
+            Data
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Components</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Components:</h6>
-                    <a class="collapse-item" href="buttons.html">Buttons</a>
-                    <a class="collapse-item" href="cards.html">Cards</a>
-                </div>
-            </div>
+            <a class="nav-link" href="/dashboard/keperluan_kunjungan">
+                <i class="fas fa-fw fa-list-alt"></i>
+                <span>Data Keperluan Kunjungan</span></a>
         </li>
 
 
@@ -142,43 +133,47 @@
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                 </div>
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Data Tamu</h6>
                     </div>
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <form action="/dashboard" method="get">
+                                    <label for="tanggal" class="form-label">Tanggal Kunjungan</label>
+                                    <div class="input-group">
+                                        <input type="date" class="form-control" id="tanggal" name="tanggal">
+                                        <button class="btn btn-outline-primary mx-3" type="submit">Filter</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Nomor Telepon</th>
+                                    <th>Alamat Rumah</th>
+                                    <th>Keperluan Kunjungan</th>
+                                    <th>Tanggal Kunjungan</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Garrett Winters</td>
-                                    <td>Accountant</td>
-                                    <td>Tokyo</td>
-                                    <td>63</td>
-                                    <td>2011/07/25</td>
-                                    <td>$170,750</td>
+                                    <td>081234567890</td>
+                                    <td>Jalan Keputih 101</td>
+                                    <td>Publikasi</td>
+                                    <td>2024/05/19</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm">View</button>
+                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -196,7 +191,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2021</span>
+                    <span>Copyright &copy; Buku Tamu 2021</span>
                 </div>
             </div>
         </footer>

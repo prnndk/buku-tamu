@@ -10,7 +10,7 @@ class TamuController extends Controller
     public function index()
     {
         $keperluan_kunjungans = KeperluanKunjungan::getAllKeperluanKunjungan();
-        return view('test', compact('keperluan_kunjungans'));
+        return view('main', compact('keperluan_kunjungans'));
     }
 
     public function store(Request $request)

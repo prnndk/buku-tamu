@@ -18,6 +18,13 @@ class KeperluanKunjungan extends Model
         ['id' => 6, 'keperluan' => 'Kunjungan Lainnya'],
     ];
 
+    public static function getKeperluanById(int $id): string
+    {
+        $keperluan = array_filter(self::$dataKeperluanKunjungan, function ($keperluan) use ($id) {
+            return $keperluan['id'] === $id;
+        });
+        return $keperluan[$id - 1]['keperluan'];
+    }
     public static function getAllKeperluanKunjungan(): array
     {
         return self::$dataKeperluanKunjungan;
