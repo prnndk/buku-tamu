@@ -12,7 +12,7 @@
     />
     <link rel="stylesheet" href="{{asset('style.css')}}">
 </head>
-<body>
+<body style="background-color: #4e73df">
 @yield('content')
 @yield('script')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

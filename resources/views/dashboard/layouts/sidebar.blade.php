@@ -12,7 +12,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item @if(request()->routeIs(['dashboard','tamu.view'])) active @endif">
         <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -27,8 +27,8 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link" href="/dashboard/keperluan_kunjungan">
+    <li class="nav-item @if(request()->routeIs('keperluan-kunjungan.*')) active @endif">
+        <a class="nav-link" href="/dashboard/keperluan-kunjungan">
             <i class="fas fa-fw fa-list-alt"></i>
             <span>Data Keperluan Kunjungan</span></a>
     </li>

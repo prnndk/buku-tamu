@@ -3,15 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tamu;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
     public function index(): View
     {
-        $tamus = Tamu::getAllTamu();
+        $tamu = Tamu::latest();
 
-        return view('dashboard.main', compact('tamus'));
+        $query_tanggal = request('tanggal');
+        if($query_tanggal){
+            $tamu = $tamu->whereDate('created_at',$query_tanggal);
+        }
+
+        return view('dashboard.main', [
+            'tamus' => $tamu->paginate(5)->withQueryString()
+        ]);
     }
 }
