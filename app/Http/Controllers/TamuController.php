@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\KeperluanKunjungan;
 use App\Models\Tamu;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class TamuController extends Controller
@@ -25,7 +26,7 @@ class TamuController extends Controller
         ]);
 
         Tamu::create($validated);
-        return redirect('/')->with('success','Berhasil Menulis ke Daftar Tamu');
+        return redirect('/')->with('success', 'Berhasil Menulis ke Daftar Tamu');
     }
 
     public function view($id)
@@ -34,9 +35,36 @@ class TamuController extends Controller
         return view('dashboard.view', compact('tamu'));
     }
 
+
+    public function edit($id): View
+    {
+        $tamu = Tamu::where('id', $id)->firstOrFail();
+        return view('dashboard.edit', [
+            'tamu' => $tamu,
+            'keperluan_kunjungans' => KeperluanKunjungan::all()
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $tamu = Tamu::where('id', $id)->firstOrFail();
+        $validated = $request->validate([
+            'nama' => 'required|string',
+            'no_telp' => 'required|numeric|min_digits:10|max_digits:15',
+            'alamat' => 'required|string',
+            'keperluan_kunjungan_id' => 'required|exists:App\Models\KeperluanKunjungan,id',
+            'pesan' => 'required|string'
+        ]);
+
+        $tamu->update($validated);
+        return redirect('/dashboard')->with('success', 'Berhasil Mengubah Data Tamu');
+    }
+
+
     public function destroy($id)
     {
-        Tamu::destroy($id);
-        return redirect('/dashboard')->with('success','Berhasil Menghapus Data Tamu');
+        $tamu = Tamu::where('id', $id)->firstOrFail();
+        $tamu->delete();
+        return redirect('/dashboard')->with('success', 'Berhasil Menghapus Data Tamu');
     }
 }
